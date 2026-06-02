@@ -2,6 +2,7 @@ import { buildSystemPrompt } from "@/lib/build-system-prompt";
 import { resolveProvider, type AIProvider } from "@/lib/ai-providers";
 import { chunkText, getDemoResponse } from "@/lib/mock-stream";
 import { streamAnthropic } from "@/lib/providers/anthropic";
+import { streamGemini } from "@/lib/providers/gemini";
 import { streamOpenAI } from "@/lib/providers/openai";
 import type { MemoryItem, Message } from "@/lib/types";
 
@@ -15,6 +16,7 @@ function getAvailableProviders(): AIProvider[] {
   const list: AIProvider[] = ["demo"];
   if (process.env.OPENAI_API_KEY) list.push("openai");
   if (process.env.ANTHROPIC_API_KEY) list.push("anthropic");
+  if (process.env.GEMINI_API_KEY) list.push("gemini");
   return list;
 }
 
@@ -92,6 +94,8 @@ export async function POST(req: Request) {
     stream = await streamOpenAI(messages, systemPrompt);
   } else if (provider === "anthropic") {
     stream = streamAnthropic(messages, systemPrompt);
+  } else if (provider === "gemini") {
+    stream = streamGemini(messages, systemPrompt);
   } else {
     stream = streamDemo(simulateTools);
   }

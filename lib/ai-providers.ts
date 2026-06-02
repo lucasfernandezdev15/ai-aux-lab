@@ -1,4 +1,4 @@
-export type AIProvider = "demo" | "openai" | "anthropic";
+export type AIProvider = "demo" | "openai" | "anthropic" | "gemini";
 
 export interface ProviderInfo {
   id: AIProvider;
@@ -14,6 +14,12 @@ export const PROVIDERS: ProviderInfo[] = [
     description: "Stream simulado sin API key",
   },
   {
+    id: "gemini",
+    label: "Gemini",
+    description: "Google Gemini vía streamGenerateContent",
+    envKey: "GEMINI_API_KEY",
+  },
+  {
     id: "openai",
     label: "OpenAI",
     description: "GPT-4o mini vía Chat Completions",
@@ -27,12 +33,17 @@ export const PROVIDERS: ProviderInfo[] = [
   },
 ];
 
+const PREFERENCE: AIProvider[] = ["gemini", "openai", "anthropic"];
+
 export function resolveProvider(
   requested: AIProvider | undefined,
   available: AIProvider[]
 ): AIProvider {
   if (requested && available.includes(requested)) return requested;
-  if (available.includes("openai")) return "openai";
-  if (available.includes("anthropic")) return "anthropic";
-  return "demo";
+  const preferred = PREFERENCE.find((p) => available.includes(p));
+  return preferred ?? "demo";
+}
+
+export function defaultProvider(available: AIProvider[]): AIProvider {
+  return resolveProvider(undefined, available);
 }

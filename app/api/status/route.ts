@@ -1,9 +1,10 @@
-import { PROVIDERS, type AIProvider } from "@/lib/ai-providers";
+import { defaultProvider, PROVIDERS, type AIProvider } from "@/lib/ai-providers";
 
 export const runtime = "edge";
 
 export async function GET() {
   const available: AIProvider[] = ["demo"];
+  if (process.env.GEMINI_API_KEY) available.push("gemini");
   if (process.env.OPENAI_API_KEY) available.push("openai");
   if (process.env.ANTHROPIC_API_KEY) available.push("anthropic");
 
@@ -14,13 +15,10 @@ export async function GET() {
 
   return Response.json({
     available,
-    default: available.includes("openai")
-      ? "openai"
-      : available.includes("anthropic")
-        ? "anthropic"
-        : "demo",
+    default: defaultProvider(available),
     providers,
     models: {
+      gemini: process.env.GEMINI_MODEL ?? "gemini-2.0-flash",
       openai: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
       anthropic: process.env.ANTHROPIC_MODEL ?? "claude-3-5-haiku-20241022",
     },

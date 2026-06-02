@@ -3,6 +3,7 @@ const stack = [
   "TypeScript",
   "Tailwind CSS",
   "Edge SSE",
+  "Gemini API",
   "OpenAI API",
   "Anthropic API",
   "react-markdown",
