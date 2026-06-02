@@ -37,13 +37,13 @@ export function SessionSidebar({
           onClick={onNew}
           className="rounded-md border border-surface-border px-2 py-1 text-xs text-content-muted transition hover:bg-surface-overlay hover:text-content"
         >
-          + Nuevo
+          + New
         </button>
       </div>
 
       <nav className="flex-1 overflow-y-auto p-2">
         <p className="px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-content-subtle">
-          Conversaciones
+          Conversations
         </p>
         <ul className="space-y-0.5">
           {sorted.map((session) => {
@@ -65,7 +65,7 @@ export function SessionSidebar({
                   type="button"
                   onClick={() => onDelete(session.id)}
                   className="rounded px-1.5 py-1 text-xs text-content-subtle opacity-0 hover:bg-red-500/10 hover:text-red-500 group-hover:opacity-100"
-                  aria-label="Eliminar"
+                  aria-label="Delete conversation"
                 >
                   ×
                 </button>
@@ -76,7 +76,7 @@ export function SessionSidebar({
       </nav>
 
       <div className="border-t border-surface-border p-3 text-[10px] text-content-subtle">
-        Persistencia · localStorage
+        Persistence · localStorage
       </div>
     </aside>
   );

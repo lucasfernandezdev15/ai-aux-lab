@@ -11,7 +11,7 @@ interface ChatInputProps {
 export function ChatInput({
   onSend,
   disabled,
-  placeholder = "Mensaje para AI UX Lab…",
+  placeholder = "Message AI UX Lab…",
 }: ChatInputProps) {
   const [value, setValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -62,7 +62,7 @@ export function ChatInput({
         </button>
       </div>
       <p className="mx-auto mt-2 max-w-3xl text-center text-[10px] text-content-subtle">
-        Enter enviar · Shift+Enter nueva línea
+        Enter to send · Shift+Enter for new line
       </p>
     </div>
   );

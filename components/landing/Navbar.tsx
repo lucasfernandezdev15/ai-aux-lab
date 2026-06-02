@@ -31,7 +31,7 @@ export function Navbar() {
             href="/chat"
             className="rounded-lg bg-accent px-3 py-2 text-sm font-medium text-white hover:bg-accent-muted"
           >
-            Abrir chat
+            Open chat
           </Link>
         </div>
       </div>

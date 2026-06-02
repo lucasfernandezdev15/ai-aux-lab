@@ -37,12 +37,12 @@ export function ChatPreview() {
           <div className="flex justify-end gap-2">
             <div className="h-2 w-24 rounded bg-zinc-700" />
             <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-zinc-700 text-[7px] text-zinc-400">
-              Tú
+              You
             </span>
           </div>
         </div>
         <div className="mx-3 mb-3 rounded-full border border-[#2f2f2f] bg-[#171717] px-3 py-2 text-[8px] text-zinc-600">
-          Mensaje…
+          Message…
         </div>
       </div>
     </div>

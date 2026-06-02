@@ -62,7 +62,7 @@ export function AppShell() {
       <div className="flex h-screen items-center justify-center bg-surface text-content-muted">
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
-          Cargando AI UX Lab…
+          Loading AI UX Lab…
         </div>
       </div>
     );

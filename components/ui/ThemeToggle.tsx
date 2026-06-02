@@ -10,8 +10,8 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       type="button"
       onClick={toggle}
       className={`inline-flex h-9 w-9 items-center justify-center rounded-lg border border-surface-border text-content-muted transition hover:bg-surface-overlay hover:text-content ${className}`}
-      aria-label={resolved === "dark" ? "Activar modo claro" : "Activar modo oscuro"}
-      title={resolved === "dark" ? "Modo claro" : "Modo oscuro"}
+      aria-label={resolved === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+      title={resolved === "dark" ? "Light mode" : "Dark mode"}
     >
       {resolved === "dark" ? (
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

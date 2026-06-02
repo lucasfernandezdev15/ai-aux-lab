@@ -14,7 +14,7 @@ import {
 import type { AIProvider } from "@/lib/ai-providers";
 import type { ChatSession, MemoryItem, Message, ToolCall } from "@/lib/types";
 
-function createSession(title = "Nueva conversación"): ChatSession {
+function createSession(title = "New chat"): ChatSession {
   const now = Date.now();
   return {
     id: uuid(),
@@ -28,7 +28,7 @@ function createSession(title = "Nueva conversación"): ChatSession {
 
 function titleFromMessage(content: string): string {
   const t = content.trim().slice(0, 42);
-  return t.length < content.trim().length ? `${t}…` : t || "Nueva conversación";
+  return t.length < content.trim().length ? `${t}…` : t || "New chat";
 }
 
 export function useChat() {
@@ -196,7 +196,7 @@ export function useChat() {
         const assistantMsg: Message = {
           id: uuid(),
           role: "assistant",
-          content: fullText || "(sin respuesta)",
+          content: fullText || "(no response)",
           createdAt: Date.now(),
         };
 
@@ -218,7 +218,7 @@ export function useChat() {
         const errMsg: Message = {
           id: uuid(),
           role: "assistant",
-          content: "No pude completar el stream. Revisá la consola o la API.",
+          content: "Could not complete the stream. Check the console or API.",
           createdAt: Date.now(),
         };
         setSessions((prev) => {

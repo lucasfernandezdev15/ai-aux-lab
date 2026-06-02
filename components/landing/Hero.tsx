@@ -15,14 +15,14 @@ export function Hero() {
           Portfolio · AI-native UX
         </p>
         <h1 className="animate-slide-up mt-4 text-4xl font-bold tracking-tight text-content sm:text-6xl [animation-delay:80ms]">
-          Interfaces de chat que{" "}
+          Chat interfaces that{" "}
           <span className="bg-gradient-to-r from-accent to-emerald-400 bg-clip-text text-transparent">
-            se sienten pro
+            feel professional
           </span>
         </h1>
         <p className="animate-slide-up mx-auto mt-6 max-w-2xl text-lg text-content-muted [animation-delay:160ms]">
-          {siteConfig.description} Diseñado para mostrar en entrevistas y procesos
-          técnicos cómo construís UX con LLMs — no solo wrappers de API.
+          {siteConfig.description} Built to show in interviews how you design UX with
+          LLMs — not just API wrappers.
         </p>
 
         <div className="animate-slide-up mt-10 flex flex-wrap items-center justify-center gap-3 [animation-delay:240ms]">
@@ -30,7 +30,7 @@ export function Hero() {
             href="/chat"
             className="rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 hover:bg-accent-muted"
           >
-            Probar demo en vivo →
+            Try live demo →
           </Link>
           <a
             href={siteConfig.github}
@@ -38,14 +38,14 @@ export function Hero() {
             rel="noreferrer"
             className="rounded-xl border border-surface-border bg-surface-raised px-6 py-3 text-sm font-medium text-content hover:bg-surface-overlay"
           >
-            Ver en GitHub
+            View on GitHub
           </a>
         </div>
 
         <dl className="animate-slide-up mt-14 grid grid-cols-3 gap-4 border-y border-surface-border py-8 sm:gap-8 [animation-delay:320ms]">
           {[
-            { label: "Patrones UX", value: "7+" },
-            { label: "Providers", value: "3" },
+            { label: "UX patterns", value: "7+" },
+            { label: "Providers", value: "4" },
             { label: "Deploy", value: "Vercel" },
           ].map((stat) => (
             <div key={stat.label}>

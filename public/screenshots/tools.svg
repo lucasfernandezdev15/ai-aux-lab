@@ -6,13 +6,13 @@
   <rect x="60" y="48" width="560" height="72" rx="10" fill="#0d0d0d" stroke="#2f2f2f"/>
   <text x="76" y="72" fill="#c4b5fd" font-family="ui-monospace,monospace" font-size="14">get_weather</text>
   <text x="76" y="94" fill="#71717a" font-family="ui-monospace,monospace" font-size="11">{ "city": "Buenos Aires" }</text>
-  <text x="76" y="112" fill="#34d399" font-family="system-ui,sans-serif" font-size="11">? 22°C, parcialmente nublado</text>
+  <text x="76" y="112" fill="#34d399" font-family="system-ui,sans-serif" font-size="11">22C, partly cloudy</text>
   <circle cx="44" cy="144" r="6" fill="#22c55e"/>
   <rect x="60" y="128" width="560" height="56" rx="10" fill="#0d0d0d" stroke="#2f2f2f"/>
   <text x="76" y="152" fill="#c4b5fd" font-family="ui-monospace,monospace" font-size="14">search_repo</text>
-  <text x="76" y="172" fill="#34d399" font-family="system-ui,sans-serif" font-size="11">? Next.js 15, Gemini</text>
+  <text x="76" y="172" fill="#34d399" font-family="system-ui,sans-serif" font-size="11">Next.js 15, Gemini</text>
   <text x="32" y="220" fill="#71717a" font-family="system-ui,sans-serif" font-size="11" font-weight="600">MEMORY</text>
   <rect x="32" y="236" width="576" height="48" rx="8" fill="#0d0d0d" stroke="#2f2f2f"/>
   <text x="48" y="266" fill="#34d399" font-family="ui-monospace,monospace" font-size="12">user.name</text>
-  <text x="140" y="266" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="12">Carlos</text>
+  <text x="140" y="266" fill="#a1a1aa" font-family="system-ui,sans-serif" font-size="12">Lucas</text>
 </svg>

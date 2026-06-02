@@ -47,13 +47,13 @@ export const DEFAULT_MEMORY: MemoryItem[] = [
   {
     id: "m1",
     key: "user.name",
-    value: "Carlos",
+    value: "Lucas",
     updatedAt: Date.now(),
   },
   {
     id: "m2",
     key: "prefs.language",
-    value: "es-AR",
+    value: "en-US",
     updatedAt: Date.now(),
   },
   {

@@ -31,7 +31,7 @@ export function ProviderSelector({
         {PROVIDERS.map((p) => (
           <option key={p.id} value={p.id} disabled={!available.includes(p.id)}>
             {p.label}
-            {!available.includes(p.id) ? " (sin API key)" : ""}
+            {!available.includes(p.id) ? " (no API key)" : ""}
           </option>
         ))}
       </select>

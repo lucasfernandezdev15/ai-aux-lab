@@ -16,7 +16,7 @@ export function ToolCallTimeline({ tools, live }: ToolCallTimelineProps) {
   if (tools.length === 0) {
     return (
       <div className="rounded-lg border border-dashed border-surface-border p-4 text-center text-xs text-content-muted">
-        Sin tool calls aún. Probá el template &quot;Tool calling demo&quot;.
+        No tool calls yet. Try the &quot;Tool calling demo&quot; template.
       </div>
     );
   }

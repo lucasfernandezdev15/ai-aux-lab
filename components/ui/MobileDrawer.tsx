@@ -27,7 +27,7 @@ export function MobileDrawer({ open, onClose, side, children, title }: MobileDra
         type="button"
         className="absolute inset-0 bg-black/50"
         onClick={onClose}
-        aria-label="Cerrar panel"
+        aria-label="Close panel"
       />
       <div
         className={`absolute top-0 flex h-full w-[min(100%,320px)] flex-col bg-surface-raised shadow-2xl ${

@@ -5,7 +5,7 @@ import { LandingPreview } from "./screenshots/LandingPreview";
 const shots = [
   {
     title: "Chat interface",
-    caption: "Layout tipo ChatGPT con sesiones y streaming",
+    caption: "ChatGPT-style layout with sessions and streaming",
     Preview: ChatPreview,
   },
   {
@@ -15,7 +15,7 @@ const shots = [
   },
   {
     title: "Landing",
-    caption: "Hero, features y CTA listos para recruiters",
+    caption: "Hero, features, and recruiter-ready CTA",
     Preview: LandingPreview,
   },
 ];
@@ -27,11 +27,11 @@ export function Screenshots() {
         <div className="max-w-2xl">
           <h2 className="text-3xl font-bold text-content">Screenshots</h2>
           <p className="mt-2 text-content-muted">
-            Previews integradas del producto. Podés reemplazarlas por capturas PNG en{" "}
+            Built-in UI previews. Replace with PNG captures in{" "}
             <code className="rounded bg-surface-overlay px-1.5 py-0.5 text-xs">
               public/screenshots/
             </code>{" "}
-            cuando tengas el deploy en Vercel.
+            after deploy if you prefer real photos.
           </p>
         </div>
 

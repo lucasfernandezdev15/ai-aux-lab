@@ -11,24 +11,24 @@ export const PROVIDERS: ProviderInfo[] = [
   {
     id: "demo",
     label: "Demo",
-    description: "Stream simulado sin API key",
+    description: "Simulated stream without an API key",
   },
   {
     id: "gemini",
     label: "Gemini",
-    description: "Google Gemini vía streamGenerateContent",
+    description: "Google Gemini via streamGenerateContent",
     envKey: "GEMINI_API_KEY",
   },
   {
     id: "openai",
     label: "OpenAI",
-    description: "GPT-4o mini vía Chat Completions",
+    description: "GPT-4o mini via Chat Completions",
     envKey: "OPENAI_API_KEY",
   },
   {
     id: "anthropic",
     label: "Anthropic",
-    description: "Claude Haiku vía Messages API",
+    description: "Claude Haiku via Messages API",
     envKey: "ANTHROPIC_API_KEY",
   },
 ];

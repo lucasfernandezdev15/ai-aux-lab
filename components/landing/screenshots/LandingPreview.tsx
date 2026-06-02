@@ -12,11 +12,11 @@ export function LandingPreview() {
       <div className="absolute left-1/2 top-6 h-20 w-40 -translate-x-1/2 rounded-full bg-[#10a37f]/20 blur-2xl" />
       <div className="relative px-4 pt-8">
         <p className="text-[8px] font-medium text-[#10a37f]">Portfolio · AI-native UX</p>
-        <p className="mt-2 text-sm font-bold text-white">Interfaces de chat</p>
-        <p className="text-sm font-bold text-[#10a37f]">que se sienten pro</p>
+        <p className="mt-2 text-sm font-bold text-white">Chat interfaces</p>
+        <p className="text-sm font-bold text-[#10a37f]">that feel pro</p>
         <div className="mt-4 flex justify-center gap-2">
           <span className="rounded-lg bg-[#10a37f] px-3 py-1.5 text-[8px] font-semibold text-white">
-            Probar demo
+            Try demo
           </span>
           <span className="rounded-lg border border-[#2f2f2f] px-3 py-1.5 text-[8px] text-zinc-400">
             GitHub

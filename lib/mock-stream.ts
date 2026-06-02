@@ -1,31 +1,31 @@
 const DEMO_RESPONSE = `## AI UX Lab — Portfolio v2
 
-Versión lista para **recruiters** y deploy en Vercel:
+Production-ready for **recruiters** and Vercel deploy:
 
-### Lo que estás viendo
+### What you are seeing
 
-1. **Streaming SSE** con tokens en tiempo real
-2. **Markdown** con tablas GFM y syntax highlighting
-3. **Multi-provider** — OpenAI, Anthropic o este demo
-4. **Memory** inyectada al system prompt
+1. **SSE streaming** with real-time tokens
+2. **Markdown** with GFM tables and syntax highlighting
+3. **Multi-provider** — Gemini, OpenAI, Anthropic, or this demo
+4. **Memory** injected into the system prompt
 
 \`\`\`typescript
-// Patrón de consumo del stream
+// Stream consumption pattern
 for await (const chunk of readSSE(res.body)) {
   if (chunk.type === "token") append(chunk.text);
   if (chunk.type === "tool") updateTimeline(chunk.tool);
 }
 \`\`\`
 
-| Capa | Tecnología |
-|------|------------|
+| Layer | Technology |
+|-------|------------|
 | UI | Next.js 15 + Tailwind |
 | API | Edge Route Handlers |
-| LLM | OpenAI · Anthropic · Demo |
+| LLM | Gemini · OpenAI · Anthropic · Demo |
 
-> **Tip hiring:** explicá por qué separaste SSE, estado de sesión y provider en capas distintas.
+> **Hiring tip:** explain why SSE, session state, and provider logic live in separate layers.
 
-¿Querés que compare este approach con un wrapper de Vercel AI SDK?`;
+Want a comparison with the Vercel AI SDK wrapper approach?`;
 
 const CHUNK_SIZE = 10;
 

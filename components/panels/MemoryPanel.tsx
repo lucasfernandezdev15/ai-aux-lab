@@ -33,7 +33,7 @@ export function MemoryPanel({ items, onChange }: MemoryPanelProps) {
         Memory panel
       </h3>
       <p className="text-xs text-content-muted">
-        Contexto persistente simulado (como memoria de agente). Se guarda en localStorage.
+        Simulated agent memory persisted to localStorage and injected into the system prompt.
       </p>
       <ul className="max-h-40 space-y-2 overflow-y-auto">
         {items.map((item) => (
@@ -49,7 +49,7 @@ export function MemoryPanel({ items, onChange }: MemoryPanelProps) {
               <button
                 type="button"
                 onClick={() => remove(item.id)}
-                className="shrink-0 text-zinc-600 hover:text-red-400"
+                className="shrink-0 text-content-subtle hover:text-red-400"
               >
                 ×
               </button>
@@ -61,13 +61,13 @@ export function MemoryPanel({ items, onChange }: MemoryPanelProps) {
         <input
           value={key}
           onChange={(e) => setKey(e.target.value)}
-          placeholder="clave (ej. user.role)"
+          placeholder="key (e.g. user.role)"
           className="w-full rounded border border-surface-border bg-surface-overlay px-2 py-1.5 text-xs text-content placeholder:text-content-subtle focus:border-accent focus:outline-none"
         />
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          placeholder="valor"
+          placeholder="value"
           className="w-full rounded border border-surface-border bg-surface-overlay px-2 py-1.5 text-xs text-content placeholder:text-content-subtle focus:border-accent focus:outline-none"
         />
         <button
@@ -75,7 +75,7 @@ export function MemoryPanel({ items, onChange }: MemoryPanelProps) {
           onClick={add}
           className="w-full rounded border border-surface-border py-1.5 text-xs text-content-muted hover:bg-surface-overlay"
         >
-          + Añadir memoria
+          + Add memory
         </button>
       </div>
     </div>

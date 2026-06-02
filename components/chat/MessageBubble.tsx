@@ -20,11 +20,11 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         }`}
         aria-hidden
       >
-        {isUser ? "Tú" : "AI"}
+        {isUser ? "You" : "AI"}
       </div>
       <div className="min-w-0 flex-1 pt-0.5">
         <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-content-subtle">
-          {isUser ? "Usuario" : "Asistente"}
+          {isUser ? "User" : "Assistant"}
         </p>
         {isUser ? (
           <p className="whitespace-pre-wrap text-[0.95rem] leading-relaxed text-content">

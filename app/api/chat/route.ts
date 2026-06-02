@@ -50,7 +50,7 @@ function streamDemo(useTools: boolean): ReadableStream {
                   status: "done",
                   result:
                     tool.name === "get_weather"
-                      ? "22°C, parcialmente nublado"
+                      ? "22C, partly cloudy"
                       : "Next.js 15, TypeScript, Tailwind, Anthropic",
                 },
               })

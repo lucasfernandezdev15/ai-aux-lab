@@ -46,7 +46,7 @@ export function ChatWindow({
             href="/"
             className="hidden text-[10px] text-content-subtle hover:text-accent lg:inline"
           >
-            ← Inicio
+            ← Home
           </Link>
           <h1 className="truncate text-sm font-medium text-content">
             {session?.title ?? "Chat"}
@@ -65,16 +65,16 @@ export function ChatWindow({
               ✦
             </div>
             <div className="max-w-md text-center">
-              <h2 className="text-xl font-semibold text-content">¿En qué trabajamos?</h2>
+              <h2 className="text-xl font-semibold text-content">What should we work on?</h2>
               <p className="mt-2 text-sm text-content-muted">
-                Elegí un prompt template en Panels o escribí abajo. Modo{" "}
+                Pick a prompt template in Panels or type below. Mode:{" "}
                 <strong className="text-content">{providerLabel}</strong>.
               </p>
             </div>
             <div className="grid w-full max-w-lg gap-2 sm:grid-cols-2">
               {[
-                "Explicá SSE streaming en 3 bullets",
-                "Generá un componente React de input con auto-resize",
+                "Explain SSE streaming in 3 bullets",
+                "Build a React chat input with auto-resize",
               ].map((hint) => (
                 <button
                   key={hint}
@@ -101,7 +101,7 @@ export function ChatWindow({
       {liveTools.length > 0 && isStreaming && (
         <div className="border-t border-surface-border bg-amber-500/5 px-4 py-2">
           <p className="text-center text-[11px] text-amber-600 dark:text-amber-400">
-            Ejecutando {liveTools.length} herramienta{liveTools.length > 1 ? "s" : ""}…
+            Running {liveTools.length} tool{liveTools.length > 1 ? "s" : ""}…
           </p>
         </div>
       )}

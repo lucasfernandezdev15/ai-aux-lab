@@ -2,7 +2,7 @@ import type { MemoryItem } from "./types";
 
 export function buildSystemPrompt(memory: MemoryItem[]): string {
   const base =
-    "Sos un asistente útil en AI UX Lab, un demo de interfaces AI-native. Respondé en el idioma del usuario, con markdown cuando ayude. Sé conciso y claro.";
+    "You are a helpful assistant in AI UX Lab, a demo of AI-native interfaces. Reply in the user's language, use markdown when helpful, and stay concise.";
 
   if (!memory.length) return base;
 
@@ -10,5 +10,5 @@ export function buildSystemPrompt(memory: MemoryItem[]): string {
     .map((m) => `- ${m.key}: ${m.value}`)
     .join("\n");
 
-  return `${base}\n\nContexto de memoria del usuario:\n${memoryBlock}`;
+  return `${base}\n\nUser memory context:\n${memoryBlock}`;
 }

@@ -1,12 +1,12 @@
 export const siteConfig = {
   name: "AI UX Lab",
-  tagline: "Interfaces AI-native listas para producción",
+  tagline: "Production-ready AI-native interfaces",
   description:
-    "Laboratorio de UX para apps con LLMs: streaming SSE, markdown, tool calling, memoria y multi-session — stack Next.js 15.",
+    "UX lab for LLM apps: SSE streaming, markdown, tool calling, memory, and multi-session chat — Next.js 15 stack.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://ai-ux-lab.vercel.app",
   github:
     process.env.NEXT_PUBLIC_GITHUB_URL ??
     "https://github.com/lucasfernandezdev15/ai-aux-lab",
-  author: "Carlos",
+  author: "Lucas",
   role: "Frontend / AI UX Engineer",
 };
