@@ -17,7 +17,7 @@
 
 | Chat + streaming | Tool calling & memory | Landing |
 |:---:|:---:|:---:|
-| ![Chat](./public/screenshots/chat.svg) | ![Tools](./public/screenshots/tools.svg) | ![Landing](./public/screenshots/landing.svg) |
+| ![Chat](https://raw.githubusercontent.com/lucasfernandezdev15/ai-aux-lab/main/public/screenshots/chat.svg) | ![Tools](https://raw.githubusercontent.com/lucasfernandezdev15/ai-aux-lab/main/public/screenshots/tools.svg) | ![Landing](https://raw.githubusercontent.com/lucasfernandezdev15/ai-aux-lab/main/public/screenshots/landing.svg) |
 
 **Para recruiters:** después del deploy, reemplazá los SVG por PNG reales (`public/screenshots/chat.png`, etc.) y actualizá las rutas en este README.
 
