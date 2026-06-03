@@ -23,6 +23,11 @@ export function ProviderSelector({
           Provider
         </label>
       )}
+      {value === "gemini" && (
+        <p className="text-[10px] leading-snug text-amber-600 dark:text-amber-400/90">
+          Free tier has rate limits. On 429, the app auto-falls back to Demo — or pick Demo now.
+        </p>
+      )}
       <select
         value={value}
         onChange={(e) => onChange(e.target.value as AIProvider)}

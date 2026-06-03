@@ -1,3 +1,5 @@
+import { parseProviderError } from "@/lib/api-errors";
+import { chunkText, getDemoResponse } from "@/lib/mock-stream";
 import type { Message } from "@/lib/types";
 
 function sse(data: object): string {
@@ -11,6 +13,24 @@ function toGeminiContents(messages: Message[]) {
       role: m.role === "assistant" ? "model" : "user",
       parts: [{ text: m.content }],
     }));
+}
+
+function streamDemoFallback(notice: string): ReadableStream {
+  const encoder = new TextEncoder();
+  const body = `${notice}\n\n---\n\n${getDemoResponse()}`;
+
+  return new ReadableStream({
+    async start(controller) {
+      for (const chunk of chunkText(body)) {
+        controller.enqueue(encoder.encode(sse({ type: "token", text: chunk })));
+        await new Promise((r) => setTimeout(r, 22));
+      }
+      controller.enqueue(
+        encoder.encode(sse({ type: "done", provider: "demo", fallback: true }))
+      );
+      controller.close();
+    },
+  });
 }
 
 export function streamGemini(
@@ -44,13 +64,21 @@ export function streamGemini(
 
         if (!res.ok) {
           const err = await res.text();
+          const parsed = parseProviderError("Gemini", res.status, err);
+
+          if (parsed.fallbackDemo) {
+            const fallback = streamDemoFallback(parsed.message);
+            const reader = fallback.getReader();
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
+              controller.enqueue(value);
+            }
+            return;
+          }
+
           controller.enqueue(
-            encoder.encode(
-              sse({
-                type: "error",
-                message: `Gemini ${res.status}: ${err.slice(0, 280)}`,
-              })
-            )
+            encoder.encode(sse({ type: "error", message: parsed.message, code: parsed.code }))
           );
           controller.close();
           return;
@@ -93,7 +121,14 @@ export function streamGemini(
         controller.enqueue(encoder.encode(sse({ type: "done" })));
       } catch (err) {
         const message = err instanceof Error ? err.message : "Gemini error";
-        controller.enqueue(encoder.encode(sse({ type: "error", message })));
+        controller.enqueue(
+          encoder.encode(
+            sse({
+              type: "error",
+              message: `**Gemini request failed**\n\n${message}\n\nTry **Demo** mode in the provider selector.`,
+            })
+          )
+        );
       } finally {
         controller.close();
       }

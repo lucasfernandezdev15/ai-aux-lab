@@ -184,7 +184,7 @@ export function useChat() {
                 setLiveTools([...toolsAcc]);
               }
               if (event.type === "error") {
-                fullText += `\n\n**Error:** ${event.message}`;
+                fullText = event.message ?? "Unknown error";
                 setStreamContent(fullText);
               }
             } catch {
