@@ -2,7 +2,7 @@ export function parseProviderError(
   provider: string,
   status: number,
   rawBody: string
-): { message: string; code?: string; fallbackDemo?: boolean } {
+): { message: string; code?: string; fallbackDemo?: boolean; retrySeconds?: number } {
   let parsed: { error?: { code?: number; message?: string; status?: string } } = {};
   try {
     parsed = JSON.parse(rawBody) as typeof parsed;
@@ -10,20 +10,30 @@ export function parseProviderError(
     /* use raw text */
   }
 
-  const apiMessage = parsed.error?.message ?? rawBody.slice(0, 200);
+  const apiMessage = parsed.error?.message ?? "";
+  const retryMatch = rawBody.match(/retry in ([\d.]+)s/i);
+  const retrySeconds = retryMatch ? Math.ceil(parseFloat(retryMatch[1])) : undefined;
+  const limitZero = /limit:\s*0/i.test(rawBody);
+  const modelMatch = rawBody.match(/model:\s*([\w.-]+)/i);
+  const model = modelMatch?.[1] ?? "this model";
 
   if (status === 429) {
+    const retryLine = retrySeconds
+      ? `You can retry Gemini in about **${retrySeconds}s**, or use **Demo** now.`
+      : "Wait a minute and retry, or use **Demo** now.";
+
+    const modelHint = limitZero
+      ? `\n\nFree tier shows **no quota** for \`${model}\`. Set \`GEMINI_MODEL=gemini-2.5-flash\` (or \`gemini-1.5-flash\`) in Vercel / \`.env.local\`.`
+      : "";
+
     return {
       code: "quota_exceeded",
       fallbackDemo: true,
+      retrySeconds,
       message:
-        `**${provider} quota exceeded (429)**\n\n` +
-        `Your API key hit the current rate or usage limit (common on the free tier).\n\n` +
-        `**What you can do:**\n` +
-        `- Switch **Provider** to **Demo** in the right panel (works without a key)\n` +
-        `- Wait and retry later, or check [Gemini rate limits](https://ai.google.dev/gemini-api/docs/rate-limits)\n` +
-        `- Add billing / a new key in [Google AI Studio](https://aistudio.google.com/apikey)\n\n` +
-        `_Details: ${apiMessage}_`,
+        `**Gemini quota exceeded**\n\n` +
+        `${retryLine} Demo mode needs no API key — switch **Provider → Demo** in the right panel.` +
+        modelHint,
     };
   }
 
@@ -32,7 +42,7 @@ export function parseProviderError(
       code: "auth_error",
       message:
         `**${provider} authentication failed (${status})**\n\n` +
-        `Check that \`GEMINI_API_KEY\` is valid in \`.env.local\` (local) or Vercel Environment Variables (production).`,
+        `Check \`GEMINI_API_KEY\` in \`.env.local\` or Vercel Environment Variables.`,
     };
   }
 
@@ -41,11 +51,13 @@ export function parseProviderError(
       code: "model_not_found",
       message:
         `**${provider} model not found (404)**\n\n` +
-        `Try setting \`GEMINI_MODEL=gemini-1.5-flash\` in your environment.`,
+        `Try \`GEMINI_MODEL=gemini-2.5-flash\` or \`gemini-1.5-flash\`.`,
     };
   }
 
   return {
-    message: `**${provider} error (${status})**\n\n${apiMessage}`,
+    message:
+      `**${provider} error (${status})**\n\n` +
+      (apiMessage || rawBody.slice(0, 180)),
   };
 }

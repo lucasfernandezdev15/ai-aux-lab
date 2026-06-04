@@ -16,7 +16,7 @@ export const PROVIDERS: ProviderInfo[] = [
   {
     id: "gemini",
     label: "Gemini",
-    description: "Google Gemini via streamGenerateContent",
+    description: "Google Gemini (tries 2.5-flash, then 1.5-flash)",
     envKey: "GEMINI_API_KEY",
   },
   {
@@ -33,7 +33,7 @@ export const PROVIDERS: ProviderInfo[] = [
   },
 ];
 
-const PREFERENCE: AIProvider[] = ["gemini", "openai", "anthropic"];
+const PREFERENCE: AIProvider[] = ["openai", "anthropic", "gemini"];
 
 export function resolveProvider(
   requested: AIProvider | undefined,
@@ -44,6 +44,7 @@ export function resolveProvider(
   return preferred ?? "demo";
 }
 
+/** Portfolio default: Demo first so deploys work without burning Gemini quota */
 export function defaultProvider(available: AIProvider[]): AIProvider {
-  return resolveProvider(undefined, available);
+  return "demo";
 }

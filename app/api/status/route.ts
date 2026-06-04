@@ -1,4 +1,5 @@
 import { defaultProvider, PROVIDERS, type AIProvider } from "@/lib/ai-providers";
+import { DEFAULT_GEMINI_MODEL } from "@/lib/gemini-models";
 
 export const runtime = "edge";
 
@@ -18,7 +19,7 @@ export async function GET() {
     default: defaultProvider(available),
     providers,
     models: {
-      gemini: process.env.GEMINI_MODEL ?? "gemini-2.0-flash",
+      gemini: process.env.GEMINI_MODEL ?? DEFAULT_GEMINI_MODEL,
       openai: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
       anthropic: process.env.ANTHROPIC_MODEL ?? "claude-3-5-haiku-20241022",
     },

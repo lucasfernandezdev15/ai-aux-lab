@@ -17,7 +17,9 @@ export function useProvider() {
         setAvailable(data.available);
         const stored = localStorage.getItem(STORAGE_KEY) as AIProvider | null;
         const pick =
-          stored && data.available.includes(stored) ? stored : data.default;
+          stored && data.available.includes(stored)
+            ? stored
+            : (data.default ?? "demo");
         setProviderState(pick);
         setLoaded(true);
       })
